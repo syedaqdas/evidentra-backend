@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    hikari:
+      maximum-pool-size: ${DB_POOL_MAX_SIZE:10}
+      minimum-idle: ${DB_POOL_MIN_IDLE:2}
+  docker:
+    compose:
+      enabled: false
+  flyway:
+    enabled: true
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    root: INFO
+    com.evidentra: INFO
+
+server:
+  shutdown: graceful

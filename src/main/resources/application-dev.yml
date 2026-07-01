@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/evidentra}
+    username: ${SPRING_DATASOURCE_USERNAME:evidentra}
+    password: ${SPRING_DATASOURCE_PASSWORD:evidentra}
+  docker:
+    compose:
+      enabled: ${SPRING_DOCKER_COMPOSE_ENABLED:true}
+      file: docker-compose.dev.yml
+      lifecycle-management: start-only
+  flyway:
+    enabled: true
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    com.evidentra: DEBUG
+    org.springframework.security: INFO

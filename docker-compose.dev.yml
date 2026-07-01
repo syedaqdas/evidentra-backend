@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: evidentra-postgres-dev
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-evidentra}
+      POSTGRES_USER: ${POSTGRES_USER:-evidentra}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-evidentra}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-dev-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-evidentra} -d ${POSTGRES_DB:-evidentra}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres-dev-data:

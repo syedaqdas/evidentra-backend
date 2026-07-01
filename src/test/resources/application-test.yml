@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:evidentra;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  docker:
+    compose:
+      enabled: false
+  flyway:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+evidentra:
+  security:
+    jwt:
+      issuer: evidentra-test
+      expiration: 30m
+      secret: test-only-secret-key-which-is-long-enough-for-hs256
